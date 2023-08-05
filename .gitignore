@@ -1,0 +1,24 @@
+.DS_Store
+
+**/*.bak
+
+# challenge test output
+challenges/misc/weird-letter/build/index.html
+challenges/misc/bad-qrcode/build/qrcode.png
+challenges/reverse/sit-and-relax/attachments/**
+challenges/pwn/2048/build/2048
+challenges/pwn/dictionary/build/main
+challenges/pwn/dictionary/build/test.py
+challenges/pwn/dictionary/build/libc.so.6
+challenges/pwn/dictionary/build/dictionary
+challenges/pwn/dictionary/build/ld-linux-x86-64.so.2
+
+# challenge test utility
+**/*.ipynb
+**/*.ipynb_checkpoints/
+
+# ignore all attachments
+writeup/**/*.zip
+
+# ignore flags.md
+flags.md
