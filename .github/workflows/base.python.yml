@@ -1,0 +1,46 @@
+name: Base-Python
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "base/python/**"
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  NAME: python
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
+          tags: |
+            alpine
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: base/${{ env.NAME }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
