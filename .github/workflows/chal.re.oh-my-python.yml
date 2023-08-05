@@ -1,16 +1,16 @@
-name: Chal-Chisato
+name: Chal-Oh My Python
 
 on:
   push:
     branches: ["main"]
     paths:
       - "!**/README.md"
-      - "challenges/misc/chisato/**"
+      - "challenges/reverse/oh-my-python/**"
   workflow_dispatch:
 
 env:
-  TYPE: misc
-  NAME: chisato
+  TYPE: reverse
+  NAME: oh-my-python
   REGISTRY: ghcr.io
 
 jobs:

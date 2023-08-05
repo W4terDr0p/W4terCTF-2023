@@ -2,6 +2,10 @@
 
 本仓库用于存储和构建 W4terCTF 2023 的题目镜像。
 
+Powered by [GZCTF](https://github.com/GZTimeWalker/GZCTF) and [GZTime](https://github.com/GZTimeWalker/)
+
+NOTE: 部分题目因保密原因不公开，请各位谅解。
+
 ## 出题规范
 
 - 题目应遵循 GZCTF 的题目规范，题目的 Dockerfile 应放置在 `challenges` 目录下。
@@ -21,7 +25,6 @@
 |  1  | [Dictionary](challenges/pwn/dictionary/)                                | Pwn       | Medium  | integer overflow, UaF | Xia0o0o0o        |
 |  2  | [ELF Parser](challenges/pwn/elf-parser/)                                | Pwn       | Medium  | ELF, strcpy           | Xia0o0o0o        |
 |  1  | [Cherry Lab](challenges/pwn/cherry-lab/)                                | Pwn       | Hard    | JS Engine             | Xia0o0o0o        |
-|  0  | Check In                                                                | Misc      | Baby    |                       | GZTime           |
 |  0  | [Weird Letter](challenges/misc/weird-letter/)                           | Misc      | Trivial | Vigenère              | GZTime           |
 |  1  | [Shadow](challenges/misc/shadow/)                                       | Misc      | Easy    | Op Char               | GZTime           |
 |  1  | [Chisato](challenges/misc/chisato/)                                     | Misc      | Normal  | PRNG                  | TonyCrane(AAA)   |
@@ -32,7 +35,6 @@
 |  1  | [Dark Maze](challenges/misc/dark-maze/)                                 | Misc      | Expert  | Maze, Revomaze        | GZTime           |
 |  0  | [Evil Traffic](challenges/forensics/evil-traffic/)                      | Forensics | Normal  | SQL Injection         | GZTime           |
 |  1  | [USB Hacker](challenges/forensics/usb-hacker)                           | Forensics | Medium  | USB Traffic           | GZTime           |
-|  0  | [Hidden Door](challenges/forensics/hidden-door/)                        | Forensics | Expert  | Vmess, PNG, JS Re     | GZTime           |
 |  0  | [GZ RSA](challenges/crypto/gz-rsa/)                                     | Crypto    | Trivial | RSA                   | peigong          |
 |  0  | [Middleman](challenges/crypto/middleman/)                               | Crypto    | Trivial | DH Middleman          | peigong          |
 |  0  | [Factor](challenges/crypto/factor/)                                     | Crypto    | Easy    | RSA                   | peigong          |

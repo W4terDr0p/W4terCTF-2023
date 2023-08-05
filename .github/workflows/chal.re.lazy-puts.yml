@@ -1,16 +1,16 @@
-name: Chal-Chisato
+name: Chal-Lazy Puts
 
 on:
   push:
     branches: ["main"]
     paths:
       - "!**/README.md"
-      - "challenges/misc/chisato/**"
+      - "challenges/reverse/lazy-puts/**"
   workflow_dispatch:
 
 env:
-  TYPE: misc
-  NAME: chisato
+  TYPE: reverse
+  NAME: lazy-puts
   REGISTRY: ghcr.io
 
 jobs:
@@ -23,6 +23,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Compile
+        run: |
+          cd challenges/${{ env.TYPE }}/${{ env.NAME }}/build
+          gcc -o origin source.c -fno-stack-protector -no-pie -O2 -static
+          strip origin
 
       - name: Log in to the Container registry
         uses: docker/login-action@v2

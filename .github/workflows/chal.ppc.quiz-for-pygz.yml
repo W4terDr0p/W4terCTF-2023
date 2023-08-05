@@ -15,7 +15,7 @@ env:
 
 jobs:
   challenge-build:
-    runs-on: [self-hosted, ubuntu-22.04]
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write

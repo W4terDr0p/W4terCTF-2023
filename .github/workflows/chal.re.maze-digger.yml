@@ -1,16 +1,16 @@
-name: Chal-Chisato
+name: Chal-Maze Digger
 
 on:
   push:
     branches: ["main"]
     paths:
       - "!**/README.md"
-      - "challenges/misc/chisato/**"
+      - "challenges/reverse/maze-digger/**"
   workflow_dispatch:
 
 env:
-  TYPE: misc
-  NAME: chisato
+  TYPE: reverse
+  NAME: maze-digger
   REGISTRY: ghcr.io
 
 jobs:
