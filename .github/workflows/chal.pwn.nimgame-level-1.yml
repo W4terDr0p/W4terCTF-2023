@@ -1,0 +1,80 @@
+name: Chal-NimGame-Level-1
+
+on:
+  push:
+    paths:
+      - "!**/README.md"
+      - "challenges/pwn/nimgame-level-1/**"
+  workflow_dispatch:
+
+env:
+  TYPE: pwn
+  NAME: "nimgame-level-1"
+  REGISTRY: ghcr.io
+
+jobs:
+  challenge-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Compile
+        run: |
+          cd challenges/${{ env.TYPE }}/${{ env.NAME }}/build
+          gcc -o nimgame src/nimgame.c -no-pie
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
+          tags: |
+            latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: challenges/${{ env.TYPE }}/${{ env.NAME }}/build
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+
+      - name: Copy attachments
+        run: |
+          temprepository="$(tr [A-Z] [a-z] <<< "${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}")"
+          mkdir -p challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments
+          docker rm tempname || true
+          tempid=$(docker create --name tempname $temprepository:latest)
+          cp challenges/${{ env.TYPE }}/${{ env.NAME }}/build/src/nimgame.c challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          docker cp $tempid:/home/ctf/nimgame challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          docker cp $tempid:/home/ctf/lib64/ld-linux-x86-64.so.2 challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          docker cp $tempid:/home/ctf/lib/x86_64-linux-gnu/libc.so.6 challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          docker rm tempname
+
+      - name: Check if attachments exist
+        id: check
+        run: |
+          if [ -d "challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments" ]; then
+            echo "attachments_exist=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "attachments_exist=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload attachments
+        uses: actions/upload-artifact@v3
+        if: ${{ steps.check.outputs.attachments_exist == 'true' }}
+        with:
+          name: ${{ env.NAME }}
+          path: challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/

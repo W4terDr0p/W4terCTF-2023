@@ -1,0 +1,81 @@
+name: Chal-Cherry Lab
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "!**/README.md"
+      - "challenges/pwn/cherry-lab/**"
+  workflow_dispatch:
+
+env:
+  TYPE: pwn
+  NAME: cherry-lab
+  REGISTRY: ghcr.io
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}
+          tags: |
+            latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          build-args: |
+            "http_proxy=${{ env.HTTP_PROXY }}"
+            "https_proxy=${{ env.HTTPS_PROXY }}"
+          context: challenges/${{ env.TYPE }}/${{ env.NAME }}/build
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+
+      - name: Copy attachments
+        run: |
+          cherryrepository="$(tr [A-Z] [a-z] <<< "${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}")"
+          mkdir -p challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments
+          mkdir -p challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/lib
+          cp challenges/${{ env.TYPE }}/${{ env.NAME }}/build/diff.patch challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments
+          cherryid=$(docker create --name tempname $cherryrepository:latest)
+          docker cp $cherryid:/home/ctf/jerry challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          docker cp $cherryid:/home/ctf/run.sh challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
+          docker cp $cherryid:/lib/x86_64-linux-gnu/libm.so.6 challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/lib
+          docker cp $cherryid:/lib/x86_64-linux-gnu/libc.so.6 challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/lib
+          docker cp $cherryid:/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/lib
+          docker rm tempname
+
+      - name: Check if attachments exist
+        id: check
+        run: |
+          if [ -d "challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments" ]; then
+            echo "attachments_exist=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "attachments_exist=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload attachments
+        uses: actions/upload-artifact@v3
+        if: ${{ steps.check.outputs.attachments_exist == 'true' }}
+        with:
+          name: ${{ env.NAME }}
+          path: challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments/
