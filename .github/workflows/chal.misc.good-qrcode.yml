@@ -1,21 +1,21 @@
-name: Chal-Unfinished Website
+name: Chal-Good QRCode
 
 on:
   push:
     branches: ["main"]
     paths:
       - "!**/README.md"
-      - "challenges/web/unfinished-website/**"
+      - "challenges/misc/good-qrcode/**"
   workflow_dispatch:
 
 env:
-  TYPE: web
-  NAME: unfinished-website
+  TYPE: misc
+  NAME: good-qrcode
   REGISTRY: ghcr.io
 
 jobs:
   challenge-build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, ubuntu-22.04]
     permissions:
       contents: read
       packages: write

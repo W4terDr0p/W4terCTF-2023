@@ -4,8 +4,7 @@ LABEL Organization="Xp0int" Author="Rieß"
 
 ENV FLASK_APP=app FLASK_ENV=production FLASK_DEBUG=True
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.matrix.moe/g' /etc/apk/repositories; \
-    mkdir -p /app; \
+RUN mkdir -p /app; \
     pip install --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple flask && \
     addgroup newnew && \
     adduser -D -G newnew -s /bin/ash -h /app newnew && \

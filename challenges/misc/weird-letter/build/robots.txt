@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: /n0_h1nt_her3.html
