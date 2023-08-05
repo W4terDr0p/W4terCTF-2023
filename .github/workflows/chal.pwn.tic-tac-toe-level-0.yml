@@ -48,7 +48,7 @@ jobs:
 
       - name: Copy attachments
         run: |
-          temprepository="$(tr [A-Z] [a-z] <<< "${{ env.REGISTRY }}/${{ github.repository }}/pwn-${{ env.NAME }}")"
+          temprepository="$(tr [A-Z] [a-z] <<< "${{ env.REGISTRY }}/${{ github.repository }}/${{ env.NAME }}")"
           mkdir -p challenges/${{ env.TYPE }}/${{ env.NAME }}/attachments
           docker rm tempname || true
           tempid=$(docker create --name tempname $temprepository:latest)

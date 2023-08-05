@@ -42,9 +42,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          build-args: |
-            "http_proxy=${{ env.HTTP_PROXY }}"
-            "https_proxy=${{ env.HTTPS_PROXY }}"
           context: challenges/${{ env.TYPE }}/${{ env.NAME }}/build
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
