@@ -2,6 +2,8 @@
 
 本仓库用于存储和构建 W4terCTF 2023 的题目镜像。
 
+所有题目均为原创，可以从 [Packages](https://github.com/orgs/W4terDr0p/packages?repo_name=W4terCTF-2023) 中获取可以被 GZCTF 直接使用的题目镜像。
+
 Powered by [GZCTF](https://github.com/GZTimeWalker/GZCTF) and [GZTime](https://github.com/GZTimeWalker/)
 
 NOTE: 部分题目因保密原因不公开，请各位谅解。

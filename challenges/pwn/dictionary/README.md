@@ -8,8 +8,6 @@
 
 ## 题目描述
 
-**You might need 32bit library to run the executable file**
-
 The dictionary can be your best friend when learning a new language or pwning.
 
 ## 题目解析
