@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Find flag</title>
+  </head>
+  <body>
+    <h1>List</h1>
+    <hr />
+    <div style="width: 100%; height: auto; float: left">
+      <ul>
+        {% for file in files %}
+        <li>
+          <a
+            href="javascript:;"
+            onclick="javascript:post('/find', {check:'{{file}}'})"
+            >{{file}}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div style="width: 100%; height: auto; float: left; font-size: large">
+      <pre>{{content}}</pre>
+    </div>
+    <div style="width: 100%; height: auto; float: left; margin-top: 50px">
+      <div style="width: 15%; height: auto; float: left; font-size: larger">
+        {{comment}}
+      </div>
+      <div style="width: 162px; height: 162px; float: left">
+        <img src="/static/{{mood}}.png" />
+      </div>
+    </div>
+  </body>
+  <script>
+    function post(url, params) {
+      var temp = document.createElement("form");
+      temp.action = url;
+      temp.method = "post";
+      temp.style.display = "none";
+      for (var x in params) {
+        var opt = document.createElement("textarea");
+        opt.name = x;
+        opt.value = params[x];
+        temp.appendChild(opt);
+      }
+      document.body.appendChild(temp);
+      temp.submit();
+      return temp;
+    }
+  </script>
+</html>

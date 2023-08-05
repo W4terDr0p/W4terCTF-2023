@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>呐 ~ flag👋</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      h1 {
+        font-size: 36px;
+        text-align: center;
+      }
+
+      /* add some emojis */
+      .emoji {
+        font-size: 48px;
+        margin-left: 10px;
+      }
+
+      .flag:before {
+        content: "🚩";
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <h1>
+        {{message}} <span class="emoji flag"></span>
+        <span class="emoji hand"></span>
+      </h1>
+    </div>
+  </body>
+</html>

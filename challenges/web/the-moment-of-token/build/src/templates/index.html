@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Moment Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">
+        <h1>Moment Login</h1>
+        <p>The moment you've been waiting for is finally here!</p>
+        <p>But be careful, the moment is fleeting.</p>
+        <p class="note">{{note}}</p>
+      </div>
+      <form action="/login" method="post">
+        <div class="box">
+          <div>
+            <label for="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Who are you?"
+            />
+          </div>
+          <div>
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="The moment now is..."
+              />
+              <!-- maybe... int(time.time()) - int(password) < 5 -->
+          </div>
+          <input type="submit" value="Login" />
+        </div>
+      </form>
+    </div>
+    <script>
+      if (window.location.pathname !== "/") {
+        setTimeout(() => {
+          window.location.pathname = "/";
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>

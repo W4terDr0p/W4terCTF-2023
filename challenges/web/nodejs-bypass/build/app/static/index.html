@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="l1nyz-tel" />
+    <meta name="challenge" content="Magical Login" />
+    <title>Login</title>
+    <style>
+      body {
+        text-align: center;
+        height: 100vh;
+        background-color: #e6f2ff;
+      }
+
+      .container {
+        padding-top: 10em;
+      }
+
+      h1 {
+        color: #336699;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* 设置表单区域背景颜色为白色，字体颜色为深蓝色 */
+      .form-style {
+        background-color: #fff;
+        color: #336699;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .form-style input {
+        width: 15em;
+      }
+
+      /* 设置表单输入框和标签字体颜色为深蓝色 */
+      input[type="text"],
+      input[type="password"],
+      label {
+        color: #336699;
+      }
+
+      /* 设置提交按钮背景颜色为深蓝色，字体颜色为白色，鼠标悬停时背景颜色变为浅蓝色 */
+      button[type="submit"] {
+        background-color: #336699;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #4d90fe;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <p>Are you admin?<br />How to be admin, emmmmm</p>
+      <form action="/" method="post">
+        <div class="form-style">
+          <label for="username">Username</label>
+          <input id="username" name="username" placeholder="username" />
+        </div>
+        <div class="form-style">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            placeholder="secret"
+            type="password"
+          />
+        </div>
+        <div class="button">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

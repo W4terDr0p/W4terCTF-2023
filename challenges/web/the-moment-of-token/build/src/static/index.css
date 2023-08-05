@@ -1,0 +1,72 @@
+body {
+  font-family: sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+form {
+  width: 400px;
+  margin: 0 auto;
+}
+form div {
+  margin-bottom: 1em;
+}
+form label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-align: left;
+}
+form input {
+  display: block;
+  width: calc(100% - 1em);
+  padding: 0.5em;
+  line-height: 1.3em;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+form input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+.box {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.title {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.title h1 {
+  font-size: 3em;
+  font-weight: bold;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.title p {
+  font-size: 0.8em;
+  color: #666;
+  margin: 0;
+}
+.note {
+  color: #333;
+  font-weight: bold;
+}

@@ -21,7 +21,6 @@
 |  1  | [Dictionary](challenges/pwn/dictionary/)                                | Pwn       | Medium  | integer overflow, UaF | Xia0o0o0o        |
 |  2  | [ELF Parser](challenges/pwn/elf-parser/)                                | Pwn       | Medium  | ELF, strcpy           | Xia0o0o0o        |
 |  1  | [Cherry Lab](challenges/pwn/cherry-lab/)                                | Pwn       | Hard    | JS Engine             | Xia0o0o0o        |
-|  0  | [iOS Calculator](challenges/pwn/ios-calculator/)                        | Pwn       | Hard    | iOS, ObjC Runtime     | Xia0o0o0o        |
 |  0  | Check In                                                                | Misc      | Baby    |                       | GZTime           |
 |  0  | [Weird Letter](challenges/misc/weird-letter/)                           | Misc      | Trivial | Vigenère              | GZTime           |
 |  1  | [Shadow](challenges/misc/shadow/)                                       | Misc      | Easy    | Op Char               | GZTime           |
@@ -43,24 +42,17 @@
 |  1  | [NGG Smooth Prime](challenges/crypto/never-gonna-give-smooth-prime/)    | Crypto    | Medium  |                       | ZMJ              |
 |  1  | [Special RSA](challenges/crypto/special-rsa/)                           | Crypto    | Medium  | RSA                   | peigong          |
 |  0  | [Login](challenges/crypto/login/)                                       | Crypto    | Medium  | AES padding oracle    | peigong          |
-|  2  | [Clearlove4396](challenges/crypto/clearlove4396/)                       | Crypto    | Hard    |                       | ZMJ              |
-|  +  | [Pilor Expansion](challenges/crypto/pilor-expansion/)                   | Crypto    | Hard    |                       | ZMJ              |
-|  0  | [You Can't Beat ZMJ4396](challenges/crypto/you-cant-beat-zmj4396/)      | Crypto    | Expert  |                       | ZMJ              |
 |  0  | [The Moment of Token](challenges/web/the-moment-of-token/)              | Web       | Easy    | JWT, Cookie           | GZTime           |
 |  0  | [One Number SQL](challenges/web/one-number-sql/)                        | Web       | Normal  | SQL                   | tel              |
 |  2  | [Feedback Box](challenges/web/feedback-box/)                            | Web       | Normal  | XSS                   | gbljdgb(Xp0int)  |
 |  0  | [Deser Plus](challenges/web/deser-plus/)                                | Web       | Medium  | PHP, deserialize      | tel              |
-|  1  | [Nice Nginx](challenges/web/nice-nginx/)                                | Web       | Medium  | nginx, PHP            | tel              |
 |  1  | [Nodejs Bypass](challenges/web/nodejs-bypass/)                          | Web       | Medium  | JS, prototype         | tel              |
 |  0  | [Help Newnew Find Flag](challenges/web/help-new-new-find-flag/)         | Web       | Medium  | flask, pin            | Rieß(Xp0int)     |
 |  1  | [Secure Password Generator](challenges/web/secure-password-generator/)  | Web       | Hard    | SQL                   | tel              |
 |  1  | [Unfinished Website](challenges/web/unfinished-website/)                | Web       | Hard    | Java SSTI             | tel              |
 |  0  | [Lazy Puts](challenges/reverse/lazy-puts/)                              | Reverse   | Trivial |                       | GZTime           |
 |  0  | [Oh My Python](challenges/reverse/oh-my-python/)                        | Reverse   | Trivial | Python                | GZTime           |
-|  0  | [坐和放宽](challenges/reverse/sit-and-relax/)                           | Reverse   | Easy    | Recursion Confusion   | Reverier(L-Team) |
-|  1  | [Virt](challenges/reverse/virt/)                                        | Reverse   | Normal  | Inst Substitution     | Reverier(L-Team) |
 |  1  | [Maze Digger](challenges/reverse/maze-digger/)                          | Reverse   | Hard    | WebAssembly, Rust     | GZTime           |
-|  1  | [Shell](challenges/reverse/shell/)                                      | Reverse   | Hard    | Win                   | Reverier(L-Team) |
 |  0  | [Quiz For PyGZ](challenges/ppc/quiz-for-pygz/)                          | PPC       | Easy    | Python                | GZTime           |
 |  0  | [GGOS](challenges/ppc/ggos/)                                            | PPC       | Medium  | GGOS, Rust            | GZTime           |
 
