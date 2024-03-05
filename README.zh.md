@@ -1,25 +1,23 @@
 # W4terCTF 2023
 
-[English](./README.md), [简体中文](./README.zh.md)
+本仓库用于存储和构建 W4terCTF 2023 的题目镜像。
 
-Repository for maintaining and building challenge images for W4terCTF 2023.
-
-All challenges here are original. You can get the challenge images that can be directly used by GZ::CTF from [Packages](https://github.com/orgs/W4terDr0p/packages?repo_name=W4terCTF-2023).
+所有题目均为原创，可以从 [Packages](https://github.com/orgs/W4terDr0p/packages?repo_name=W4terCTF-2023) 中获取可以被 GZCTF 直接使用的题目镜像。
 
 Powered by [GZCTF](https://github.com/GZTimeWalker/GZCTF) and [GZTime](https://github.com/GZTimeWalker/)
 
-NOTE: Some challenges are not publicly available for confidentiality reasons. Please understand.
+NOTE: 部分题目因保密原因不公开，请各位谅解。
 
-## Challenge Designing Specification
+## 出题规范
 
-- All challengs should follow the challenge specification of GZCTF. Dockerfile of the challenge should be placed to `challenges` directory.
-- For each challenge, please create a specific branch with name `catagory/challenge_name` and develop in that branch. Finally squash merge to `main`.
-- For those base images that can be shared and reused by different challengs, please place then in the `base` directory. For example, `xinetd`, `python`, `php`, etc. 
-- Please open an issue to track the developing progress of a challenge if it’s necessary.
+- 题目应遵循 GZCTF 的题目规范，题目的 Dockerfile 应放置在 `challenges` 目录下。
+- 对于每道题目，应创建一个单独的 branch，命名为 `<分类>/<题目名>`，并在该 branch 中进行相关操作，最后 squash merge 到 main 分支。
+- 对于能够共用的题目基础镜像，应放置在 `base` 目录下。如 `xinetd`、`python`、`php` 等。
+- 如有必要，可以开启一个 issue 来追踪题目的出题进度。
 
-## Challenges List
+## 题目列表
 
-| Re  | Challenge                                                                  | Catagory      | Difficulty    | Tags                  | Author           |
+| Re  | 题目名                                                                  | 分类      | 难度    | 标签                  | 出题人           |
 | :-: | :---------------------------------------------------------------------- | :-------- | :------ | :-------------------- | :--------------- |
 |  0  | [NC Test](challenges/pwn/nc-test/)                                      | Pwn       | Baby    |                       | GZTime           |
 |  0  | [Tic-Tac-Toe Level 0](challenges/pwn/tic-tac-toe-level-0/)              | Pwn       | Easy    | Stack overflow        | ConanC           |
@@ -62,43 +60,41 @@ NOTE: Some challenges are not publicly available for confidentiality reasons. Pl
 |  0  | [Quiz For PyGZ](challenges/ppc/quiz-for-pygz/)                          | PPC       | Easy    | Python                | GZTime           |
 |  0  | [GGOS](challenges/ppc/ggos/)                                            | PPC       | Medium  | GGOS, Rust            | GZTime           |
 
-## Difficulty and Points
+## 难度与分值
 
-| Difficulty         | Baby | Trivial | Easy | Normal | Medium | Hard | Expert | Insane |
+| 题目难度         | Baby | Trivial | Easy | Normal | Medium | Hard | Expert | Insane |
 | :--------------- | ---- | ------- | ---- | ------ | ------ | ---- | ------ | ------ |
-| Initial Points         | 200  | 500     | 1000 | 1000   | 1000   | 1000 | 1000   | 1000   |
-| Minimum Points Ratio for Challenge | 50%  | 20%     | 20%  | 20%    | 20%    | 20%  | 30%    | 30%    |
-| Minimum Points for Challenge     | 100  | 100     | 200  | 200    | 200    | 200  | 300    | 300    |
-| Difficulty Factor         | 5.0  | 5.0     | 7.0  | 10.0   | 13.0   | 20.0 | 20.0   | 25.0   |
-| Number of solves when reaching 50% pts     | -    | 6       | 7    | 10     | 14     | 20   | 25     | 30     |
+| 题目分值         | 200  | 500     | 1000 | 1000   | 1000   | 1000 | 1000   | 1000   |
+| 题目最低分值比例 | 50%  | 20%     | 20%  | 20%    | 20%    | 20%  | 30%    | 30%    |
+| 题目最低分值     | 100  | 100     | 200  | 200    | 200    | 200  | 300    | 300    |
+| 难度系数         | 5.0  | 5.0     | 7.0  | 10.0   | 13.0   | 20.0 | 20.0   | 25.0   |
+| 50% 分值次数     | -    | 6       | 7    | 10     | 14     | 20   | 25     | 30     |
 
-## Repository Structure
+## 项目结构
 
 ```
 .github/workflows/                      # github actions
-    └── chal.<category>.<name>.yml      # Building script for each challenge
-base/                                   # Base image
-challenges/                             # Challenges directory
+    └── chal.<category>.<name>.yml      # 每个题目的编译脚本
+base/                                   # 基础镜像
+challenges/                             # 题目目录
     ├── challenge1/
-    │   ├── build/                      # Challenge building directory
+    │   ├── build/                      # 题目构建目录
     │   │   ├── Dockerfile
     │   │   └── more...
-    │   ├── attachments/                # Challenge attachment
+    │   ├── attachments/                # 题目附件目录
     │   └── README.md
     ├── challenge2/
     └── more...
 ```
 
-## File Directory
+## 文件目录
 
-Please write the `Dockerfile` and place it in `challenges` then add corresponding building task action to `.github/workflows`. The naming should follow the format of chal.<challenge_name>.yml. The challenge needs to follow the GZCTF question specification.
+编写 `Dockerfile` 并放置在 `challenges` 目录下，然后在 `.github/workflows` 中添加对应的构建任务。命名应该遵循 `chal.<题目名>.yml` 的格式，题目需要遵循 GZCTF 的题目规范。
 
+- `base` 目录
 
+`base` 目录下存放了部分题目所需的基础镜像，包括 `xinetd`、基于 `xinetd` 暴露的 `python` 镜像。
 
-- `base` directory
+- `challenges` 目录
 
-`base` contains the base images that can be shared and reused by some challenges, including `xinetd`, `python` image exposed based on `xinetd`.
-
-- `challenges` directory
-
-`challenges` contains Dockerfile of challenge and other files related to the challenges.
+`challenges` 目录下存放了题目的 Dockerfile，以及题目的相关文件。
