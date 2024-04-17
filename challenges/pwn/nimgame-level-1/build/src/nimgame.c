@@ -22,7 +22,7 @@ int main() {
     printf("There are %i tokens on the table.\n", tokens_cnt);
     while(tokens_cnt > 0) {
         printf("How many tokens would you like to take?: ");
-        read(0, input, 0x32);
+        read(0, input, 0x60);
         printf("\nPlayer takes %s tokens.\n", input);
         input[8] = 0;
         int token = atoi(input);
